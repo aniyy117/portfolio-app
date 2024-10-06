@@ -1,8 +1,9 @@
 "use client";
-
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Nav from "./Nav";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
@@ -23,7 +24,9 @@ const Header = () => {
         </div>
 
         {/* mobile */}
-        <div className="block xl:hidden">mobile</div>
+        <div className="block xl:hidden">
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

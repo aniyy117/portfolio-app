@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 
 const stairsAnimation = {
@@ -14,9 +15,9 @@ const stairsAnimation = {
 };
 
 const reverseIndex = (i) => {
-    const totalSteps = 6;
-    return totalSteps - i - 1;
-}
+  const totalSteps = 6;
+  return totalSteps - i - 1;
+};
 
 const Stairs = () => {
   const stairs = [...Array(6)];
@@ -31,7 +32,7 @@ const Stairs = () => {
             animate="animate"
             exit="exit"
             transition={{
-              duration: 0.5,
+              duration: 0.4,
               ease: "easeInOut",
               delay: reverseIndex(i) * 0.1,
             }}
