@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -31,6 +31,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const about = {
   title: "About me",
@@ -59,8 +60,6 @@ const about = {
 const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
-  description:
-    "I am a full-stack developer with 3.6+ years of experience building responsive, scalable web apps using React, Redux, Next.js, and TypeScript. Skilled in modern web technologies (HTML5, CSS3, ES6+), optimizing performance, and delivering user-friendly solutions through best coding practices and team collaboration.",
   items: [
     {
       company: "TechChefz Digital",
@@ -103,8 +102,6 @@ const experience = {
 const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   items: [
     {
       institution: "University of Delhi",
@@ -121,8 +118,6 @@ const education = {
 
 const skills = {
   title: "My Skills",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   skillList: [
     {
       name: "HTML",
@@ -183,7 +178,34 @@ const skills = {
   ],
 };
 
-const Resume = () => {
+const tabs = [
+  {
+    name: "About",
+    value: "about",
+  },
+  {
+    name: "Experience",
+    value: "experience",
+  },
+  {
+    name: "Education",
+    value: "education",
+  },
+  {
+    name: "Skills",
+    value: "skills",
+  },
+];
+
+const Resume = ({ searchParams }) => {
+  const router = useRouter();
+  const activeTab = useMemo(() => {
+    return (
+      tabs.find((tab) => tab.value === searchParams?.tab)?.value ||
+      tabs[0].value
+    );
+  }, [searchParams?.tab]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -195,24 +217,34 @@ const Resume = () => {
     >
       <div className="container mx-auto">
         <Tabs
-          defaultValue="about"
+          value={activeTab}
+          onValueChange={(value) => {
+            router.push(`/resume?tab=${value}`);
+          }}
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="about">About me</TabsTrigger>
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
+            {tabs.map((tab) => {
+              return (
+                <TabsTrigger key={tab.value} value={tab.value}>
+                  {tab.name}
+                </TabsTrigger>
+              );
+            })}
           </TabsList>
           {/* content */}
           <div className="min-h-[70vh] w-full">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: "easeIn" },
+                }}
+                className="flex flex-col gap-[30px] text-center xl:text-left"
+              >
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                {/* <p className="max-w-[700px] text-white/60 mx-auto xl:mx-0">
-                  {experience.description}
-                </p> */}
                 <ScrollArea className="h-[500px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => {
@@ -236,15 +268,20 @@ const Resume = () => {
                     })}
                   </ul>
                 </ScrollArea>
-              </div>
+              </motion.div>
             </TabsContent>
             {/* education */}
+
             <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: "easeIn" },
+                }}
+                className="flex flex-col gap-[30px] text-center xl:text-left"
+              >
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                {/* <p className="max-w-[700px] text-white/60 mx-auto xl:mx-0">
-                  {education.description}
-                </p> */}
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                     {education.items.map((item, index) => {
@@ -268,11 +305,19 @@ const Resume = () => {
                     })}
                   </ul>
                 </ScrollArea>
-              </div>
+              </motion.div>
             </TabsContent>
+
             {/* skills */}
             <TabsContent value="skills" className="w-full h-full">
-              <div className="flex flex-col gap-[30px]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: "easeIn" },
+                }}
+                className="flex flex-col gap-[30px]"
+              >
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
                   {/* <p className="text-white/60 max-w-[700px] mx-auto xl:mx-0">
@@ -299,14 +344,21 @@ const Resume = () => {
                     })}
                   </ul>
                 </ScrollArea>
-              </div>
+              </motion.div>
             </TabsContent>
             {/* about */}
             <TabsContent
               value="about"
               className="w-full text-center xl:text-left"
             >
-              <div className="flex flex-col gap-[30px]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: "easeIn" },
+                }}
+                className="flex flex-col gap-[30px]"
+              >
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[700px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
@@ -326,7 +378,7 @@ const Resume = () => {
                     );
                   })}
                 </ul>
-              </div>
+              </motion.div>
             </TabsContent>
           </div>
         </Tabs>
