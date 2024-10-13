@@ -70,7 +70,7 @@ body {
 
 @layer base {
   * {
-    @apply border-border font-primary;
+    @apply font-primary;
   }
   body {
     @apply font-primary  bg-primary text-white leading-loose;
@@ -94,5 +94,39 @@ body {
 
   .text-outline-hover {
     -webkit-text-stroke: 1px #00ff99;
+  }
+
+  /* General scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00e187; /* Change color on hover over the scrollbar */
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #00e187; /* Same color for active state */
+  }
+
+  /* Only show scrollbar on body hover */
+  body:hover::-webkit-scrollbar {
+    display: block; /* Ensures scrollbar appears only on hover */
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0); /* Thumb hidden by default */
+  }
+  body:hover::-webkit-scrollbar-thumb {
+    background: #00e187;
   }
 }
