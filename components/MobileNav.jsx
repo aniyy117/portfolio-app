@@ -19,7 +19,7 @@ const link = [
     href: "/resume",
   },
   {
-    name: "work",
+    name: "Work",
     href: "/work",
   },
   {
