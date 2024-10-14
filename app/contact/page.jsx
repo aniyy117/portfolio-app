@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,11 +23,19 @@ const info = [
     icon: <FaPhoneAlt />,
     title: "Phone",
     description: "+91 8178990405",
+    link: "tel:+918178990405", // Phone link
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "janiket112@gmailcom",
+    description: "janiket112@gmail.com",
+    link: "mailto:janiket112@gmail.com", // Email link
+  },
+  {
+    icon: <FaWhatsapp />,
+    title: "Whatsapp",
+    description: "+91 8178990405",
+    link: "https://wa.me/+918178990405", // Whatsapp link
   },
 ];
 
@@ -59,9 +67,7 @@ const Contact = () => {
     toast.loading("Sending message...", { id: toastId });
     const res = await fetch("/api/contact", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
 
@@ -73,6 +79,7 @@ const Contact = () => {
       toast.error(data.message, { id: toastId });
     }
   };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -149,8 +156,6 @@ const Contact = () => {
                     )}
                   />
                 </div>
-                {/* select */}
-                {/* textarea */}
                 <FormField
                   control={form.control}
                   name="message"
@@ -167,7 +172,6 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-                {/* button */}
                 <div className="flex gap-4">
                   <Button size="md" className="max-w-40">
                     Send Message
@@ -187,19 +191,22 @@ const Contact = () => {
           {/* info */}
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
             <ul className="flex flex-col gap-10">
-              {info.map((item, index) => {
-                return (
-                  <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px]  h-[52px] xl:w-[72px] xl:h-[72px] bg-secondaryBg text-accent rounded-md flex items-center justify-center">
-                      <div className="text-[28px]">{item.icon}</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white/60">{item.title}</p>
-                      <p className="text-xl">{item.description}</p>
-                    </div>
-                  </li>
-                );
-              })}
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
+                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-secondaryBg text-accent rounded-md flex items-center justify-center">
+                    <div className="text-[28px]">{item.icon}</div>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-white/60">{item.title}</p>
+                    <a
+                      href={item.link}
+                      className="text-xl hover:text-accent hover:underline"
+                    >
+                      {item.description}
+                    </a>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -209,5 +216,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-// i had this from i want to send this form data on my personal mail
