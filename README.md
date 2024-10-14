@@ -16,7 +16,7 @@ Welcome to my portfolio! This project showcases my skills and work in web develo
 
 ## Demo
 
-![Portfolio Screenshot](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of your portfolio -->
+![Portfolio Screenshot](/public/assets/screenshots/portDesk.png) <!-- Replace with a screenshot of your portfolio -->
 
 ## Technologies
 
@@ -30,7 +30,7 @@ This portfolio is built using the following technologies:
 ## Features
 
 - **Responsive Design**: Ensures a seamless experience on both desktop and mobile devices.
-  ![Responsive Design Example](https://via.placeholder.com/800x400) <!-- Replace with an image of your responsive design -->
+  ![Responsive Design Example](/public/assets/screenshots/portPhn.png) <!-- Replace with an image of your responsive design -->
 
 - **Dynamic Content**: Showcases my projects, skills, and services dynamically.
 - **User-Friendly Interface**: Simple navigation for an enhanced user experience.
