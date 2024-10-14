@@ -18,12 +18,6 @@ export const metadata = {
   },
   description:
     "Explore the portfolio of Aniket Jadhav, a web developer specializing in Next.js, React, and TypeScript. Discover projects, skills, and experience in modern web development.",
-  openGraph: {
-    title: "Aniket Jadhav",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-    siteName: "Aniket Jadhav",
-    type: "website",
-  },
 };
 
 export default function RootLayout({ children }) {
