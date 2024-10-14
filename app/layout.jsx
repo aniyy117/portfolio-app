@@ -12,6 +12,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
     template: "%s | Aniket Jadhav",
     default: "Aniket Jadhav",
