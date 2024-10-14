@@ -29,6 +29,7 @@ const Social = ({ containerStyle, iconStyle }) => {
     <div className={containerStyle}>
       {social.map((item) => (
         <Link href={item.path} key={item.name} className={iconStyle}>
+          <span className="sr-only">{item.name}</span>
           {item.icon}
         </Link>
       ))}
