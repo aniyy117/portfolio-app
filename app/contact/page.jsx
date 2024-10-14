@@ -6,10 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 
@@ -18,6 +16,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const info = [
   {
@@ -36,9 +35,11 @@ const formSchema = z.object({
   firstName: z.string().min(3, "Please enter a valid first name"),
   lastName: z.string().optional(),
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string(),
-  message: z.string().optional(),
+  phoneNumber: z.string().optional(),
+  message: z.string().min(2, "Please enter a valid message"),
 });
+
+const toastId = "toast-contact";
 
 const Contact = () => {
   const form = useForm({
@@ -47,13 +48,31 @@ const Contact = () => {
       firstName: "",
       lastName: "",
       email: "",
-      phone: "",
+      phoneNumber: "",
       message: "",
     },
   });
 
   const { handleSubmit, reset } = form;
-  const onSubmit = (values) => {};
+
+  const onSubmit = async (values) => {
+    toast.loading("Sending message...", { id: toastId });
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      toast.success(data.message, { id: toastId });
+      reset();
+    } else {
+      toast.error(data.message, { id: toastId });
+    }
+  };
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -190,3 +209,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+// i had this from i want to send this form data on my personal mail
