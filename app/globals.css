@@ -129,4 +129,12 @@ body {
   body:hover::-webkit-scrollbar-thumb {
     background: #00e187;
   }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    @apply bg-primary text-white;
+    transition: all 5000s ease-in-out 0s;
+  }
 }
