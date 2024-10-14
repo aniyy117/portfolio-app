@@ -8,6 +8,14 @@ import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/resume/resume.pdf";
+    link.download = "Aniket Jadhav.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -39,6 +47,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="flex items-center gap-2 uppercase"
+                onClick={handleDownload}
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />

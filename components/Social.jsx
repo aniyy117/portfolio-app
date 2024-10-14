@@ -1,22 +1,27 @@
 import React from "react";
 import Link from "next/link";
-import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const social = [
   {
     name: "Github",
-    path: "",
+    path: "https://github.com/aniyy117",
     icon: <FaGithub />,
   },
   {
     name: "Linkedin",
-    path: "",
+    path: "https://www.linkedin.com/in/aniket-jadhav-847151157/",
     icon: <FaLinkedinIn />,
   },
   {
     name: "Twitter",
-    path: "",
+    path: "https://x.com/saysditto",
     icon: <FaTwitter />,
+  },
+  {
+    name: "Whatsapp",
+    path: "https://wa.me/+918178990405",
+    icon: <FaWhatsapp />,
   },
 ];
 const Social = ({ containerStyle, iconStyle }) => {

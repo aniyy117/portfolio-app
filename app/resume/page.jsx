@@ -64,36 +64,26 @@ const experience = {
     {
       company: "TechChefz Digital",
       title: "Associate Technology",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       duration: "Jan 2023 - Present",
     },
     {
       company: "Adavanced Structures india",
       title: "Senior Software Developer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      duration: "Sep 2021 - Dec 2022",
+      duration: "Apr 2022 - Dec 2022",
     },
     {
       company: "Adavanced Structures india",
-      title: "Senior Software Developer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      duration: "Sep 2021 - Dec 2022",
+      title: "Software Developer",
+      duration: "Sep 2021 - Mar 2022",
     },
     {
       company: "Stockpe",
       title: "Frontend Developer Intern",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       duration: "Jul 2021 - Sep 2021",
     },
     {
       company: "SabPay",
       title: "Frontend Developer Intern",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       duration: "Jan 2021 - June 2021",
     },
   ],
