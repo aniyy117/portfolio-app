@@ -23,14 +23,6 @@ export const metadata = {
     url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     siteName: "Aniket Jadhav",
     type: "website",
-    images: [
-      {
-        url: "/public/assets/screenshots/portDesk.png",
-        alt: "Aniket Jadhav",
-        width: 1200,
-        height: 630,
-      },
-    ],
   },
 };
 
