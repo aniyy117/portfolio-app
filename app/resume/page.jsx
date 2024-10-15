@@ -203,7 +203,7 @@ const Resume = ({ searchParams }) => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex items-center justify-center pt-12  xl:pt-0"
+      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0 "
     >
       <div className="container mx-auto">
         <Tabs
@@ -223,7 +223,7 @@ const Resume = ({ searchParams }) => {
             })}
           </TabsList>
           {/* content */}
-          <div className="min-h-[70vh] w-full">
+          <div className="xl:min-h-[70vh] w-full">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
               <motion.div
@@ -235,7 +235,7 @@ const Resume = ({ searchParams }) => {
                 className="flex flex-col gap-[30px] text-center xl:text-left"
               >
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <ScrollArea className="h-[500px]">
+                <ScrollArea className="xl:h-[500px] h-full">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => {
                       return (
@@ -314,17 +314,20 @@ const Resume = ({ searchParams }) => {
                     {skills.description}
                   </p> */}
                 </div>
-                <ScrollArea className="h-[500px]">
+                <ScrollArea className="xl:h-[500px] h-full">
                   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
                     {skills.skillList.map((skill, index) => {
                       return (
                         <li key={index}>
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
-                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center flex-col gap-3 group">
                                 <div className="text-6xl group-hover:text-accent transition-all duration-300">
                                   {skill.icon}
                                 </div>
+                                <span className="text-white/60 group-hover:text-accent transition-all duration-300 xl:sr-only">
+                                  {skill.name}
+                                </span>
                               </TooltipTrigger>
                               <TooltipContent>{skill.name}</TooltipContent>
                             </Tooltip>
@@ -347,7 +350,7 @@ const Resume = ({ searchParams }) => {
                   opacity: 1,
                   transition: { duration: 0.4, ease: "easeIn" },
                 }}
-                className="flex flex-col gap-[30px] pb-12 xl:pb-0"
+                className="flex flex-col gap-[30px] "
               >
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[700px] text-white/60 mx-auto xl:mx-0">
