@@ -28,7 +28,7 @@ const projects = [
       { name: "Next.js" },
       { name: "Tailwind CSS" },
       { name: "TypeScript" },
-      { name: "PostgreSQL" },
+      { name: "Mongodb" },
     ],
     image: "/assets/work/thumb1.png",
     live: "https://evently-aniyy117.vercel.app/",
