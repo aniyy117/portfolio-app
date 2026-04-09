@@ -20,6 +20,10 @@ const link = [
     href: "/work",
   },
   {
+    name: "Blog",
+    href: "/blog",
+  },
+  {
     name: "Contact",
     href: "/contact",
   },

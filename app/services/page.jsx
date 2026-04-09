@@ -7,30 +7,23 @@ import { motion } from "framer-motion";
 const services = [
   {
     num: "01",
-    title: "Web Development",
+    title: "Frontend Architecture",
     description:
-      "I build websites using the latest technologies and frameworks. I am always looking for new ways to improve my skills and stay up-to-date with the latest trends in web development.",
+      "Design and build scalable, reusable component systems using React.js and Next.js. Expertise in SSR, SSG, and ISR rendering strategies, component-driven development with Storybook, and Nx monorepo architecture for enterprise-scale applications.",
     href: "",
   },
   {
     num: "02",
-    title: "Mobile Development",
+    title: "Performance Optimization",
     description:
-      "I focus on developing native applications for iOS and Android, leveraging the latest technologies and frameworks while continually enhancing my skills to stay ahead in mobile development.",
+      "Improve web performance through Core Web Vitals optimization, Lighthouse score enhancement, code-splitting, lazy loading, and image optimization. Implement CDN caching strategies and advanced bundling techniques to maximize user experience.",
     href: "",
   },
-  // {
-  //   num: "03",
-  //   title: "UI/UX Design",
-  //   description:
-  //     "I create intuitive and engaging user interfaces and experiences that meet user needs. I focus on user research, wireframing, and prototyping to deliver design solutions that enhance usability and aesthetics.",
-  //   href: "",
-  // },
   {
     num: "03",
-    title: "SEO Optimization",
+    title: "Full-Stack Development",
     description:
-      "I help improve website visibility and rankings on search engines through effective SEO strategies. This includes keyword research, on-page optimization, and link-building techniques to drive organic traffic.",
+      "Build end-to-end applications with React/Next.js frontend, Node.js/Express.js backend, and MongoDB/PostgreSQL databases. Implement RESTful APIs, JWT/OAuth authentication, and secure data handling with proper validation and error handling.",
     href: "",
   },
 ];
@@ -62,13 +55,18 @@ const Services = () => {
                   <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
                     {item.num}
                   </div>
-                  <div
-                    href={item.href}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent
-                     transition-all duration-500 flex items-center justify-center hover:-rotate-45"
-                  >
-                    <BsArrowDownRight className="text-primary text-3xl" />
-                  </div>
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex items-center justify-center hover:-rotate-45"
+                    >
+                      <BsArrowDownRight className="text-primary text-3xl" />
+                    </Link>
+                  ) : (
+                    <div className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex items-center justify-center hover:-rotate-45">
+                      <BsArrowDownRight className="text-primary text-3xl" />
+                    </div>
+                  )}
                 </div>
                 {/* heading */}
                 <h2
