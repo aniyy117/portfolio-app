@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
@@ -18,9 +17,6 @@ const Header = () => {
         {/* desktop */}
         <div className="hidden xl:flex items-center gap-9">
           <Nav />
-          <Link href="/contact">
-            <Button>Hire me</Button>
-          </Link>
         </div>
 
         {/* mobile */}

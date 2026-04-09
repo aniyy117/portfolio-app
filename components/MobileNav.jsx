@@ -1,31 +1,22 @@
 "use client";
 import React from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CiMenuFries } from "react-icons/ci";
 
 const link = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-  {
-    name: "Resume",
-    href: "/resume",
-  },
-  {
-    name: "Work",
-    href: "/work",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Resume", href: "/resume" },
+  { name: "Work", href: "/work" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const MobileNav = () => {
@@ -37,6 +28,7 @@ const MobileNav = () => {
         <span className="sr-only">Open menu</span>
       </SheetTrigger>
       <SheetContent className="flex flex-col gap-4">
+        <SheetTitle className="sr-only">Navigation menu</SheetTitle>
         <div className="mt-32 mb-40 text-center text-2xl ">
           <Link href="/">
             <SheetTrigger>

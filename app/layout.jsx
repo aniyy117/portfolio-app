@@ -13,18 +13,16 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
-  title: {
-    template: "%s | Aniket Jadhav",
-    default: "Aniket Jadhav",
-  },
+  title: { template: "%s | Aniket Jadhav", default: "Aniket Jadhav" },
   description:
     "Explore the portfolio of Aniket Jadhav, a web developer specializing in Next.js, React, and TypeScript. Discover projects, skills, and experience in modern web development.",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={jetBrainsMono.className}>
+      <body suppressHydrationWarning className={jetBrainsMono.className}>
         <Header />
         <StairTranstition />
         <PageTranstition>{children}</PageTranstition>

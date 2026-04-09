@@ -45,6 +45,7 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   phoneNumber: z.string().optional(),
   message: z.string().min(2, "Please enter a valid message"),
+  website: z.string().optional(), // Honeypot field
 });
 
 const toastId = "toast-contact";
@@ -58,6 +59,7 @@ const Contact = () => {
       email: "",
       phoneNumber: "",
       message: "",
+      website: "",
     },
   });
 
@@ -172,8 +174,21 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
+                {/* Honeypot field - hidden from users */}
+                <FormField
+                  control={form.control}
+                  name="website"
+                  render={({ field }) => (
+                    <FormItem className="hidden">
+                      <FormControl>
+                        <Input placeholder="Website" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <div className="flex gap-4">
-                  <Button size="md" className="max-w-40">
+                  <Button type="submit" size="md" className="max-w-40">
                     Send Message
                   </Button>
                   <Button

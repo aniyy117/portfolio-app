@@ -31,14 +31,16 @@ const Home = () => {
           
           text-center xl:order-none xl:text-left"
           >
-            <span className="text-xl">Software Developer</span>
+            <span className="text-xl">Senior Frontend Engineer</span>
             <h1 className="h1 mb-6">
               Hello I&apos;m <br />
               <span className="text-accent">Aniket Jadhav</span>
             </h1>
             <p className="mb-9 max-w-[500px] text-white/80">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies.
+              I architect scalable, high-performance web applications using
+              React.js and Next.js. Expertise in performance optimization,
+              component architecture, and delivering production-grade UI
+              systems.
             </p>
 
             {/* buttons */}
