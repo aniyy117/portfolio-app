@@ -1,12 +1,20 @@
 "use client";
 import React, { useMemo, Suspense } from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaFigma,
+  FaNodeJs,
+} from "react-icons/fa";
 
 import {
   SiRedux,
   SiNextdotjs,
   SiTailwindcss,
   SiTypescript,
+  SiZod,
   SiJest,
   SiShadcnui,
   SiGit,
@@ -27,16 +35,20 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const tabs = [
   {
+    name: "About",
+    value: "about",
+  },
+  {
+    name: "Skills",
+    value: "skills",
+  },
+  {
     name: "Experience",
     value: "experience",
   },
   {
     name: "Education",
     value: "education",
-  },
-  {
-    name: "Skills",
-    value: "skills",
   },
 ];
 
@@ -75,13 +87,28 @@ const experience = {
     },
     {
       company: "TechChefz Digital",
-      title: "Associate Technology · Frontend Lead",
+      title: "Associate Technology",
       duration: "Jan 2023 - Dec 2024",
     },
     {
-      company: "TechChefz Digital",
-      title: "Frontend Developer",
-      duration: "Jul 2021 - Dec 2022",
+      company: "Adavanced Structures india",
+      title: "Senior Software Developer",
+      duration: "Apr 2022 - Dec 2022",
+    },
+    {
+      company: "Adavanced Structures india",
+      title: "Software Developer",
+      duration: "Sep 2021 - Mar 2022",
+    },
+    {
+      company: "Stockpe",
+      title: "Frontend Developer Intern",
+      duration: "Jul 2021 - Sep 2021",
+    },
+    {
+      company: "SabPay",
+      title: "Frontend Developer Intern",
+      duration: "Jan 2021 - June 2021",
     },
   ],
 };
@@ -91,12 +118,12 @@ const education = {
   title: "My Education",
   items: [
     {
-      institution: "Dr. D.Y. Patil Institute of Technology",
-      degree: "Bachelor of Engineering in Information Technology",
-      duration: "Aug 2017 - Jul 2021",
+      institution: "University of Delhi",
+      degree: "Bachelor of Science",
+      duration: "Jul 2018 - Jul 2021",
     },
     {
-      institution: "The Adarsh School",
+      institution: "The Adrash School",
       degree: "CBSE 12th Boards",
       duration: "Jul 2016 - Jul 2018",
     },
@@ -109,52 +136,60 @@ const skills = {
     "I specialize in modern frontend technologies with a focus on React ecosystem, performance optimization, and scalable architecture.",
   skillList: [
     {
+      name: "HTML",
       icon: <FaHtml5 />,
-      name: "html 5",
     },
     {
+      name: "CSS",
       icon: <FaCss3Alt />,
-      name: "css 3",
     },
     {
+      name: "JavaScript",
       icon: <FaJs />,
-      name: "javascript",
     },
     {
+      name: "React",
       icon: <FaReact />,
-      name: "react.js",
     },
     {
-      icon: <SiNextdotjs />,
-      name: "next.js",
-    },
-    {
-      icon: <SiTypescript />,
-      name: "typescript",
-    },
-    {
-      icon: <SiTailwindcss />,
-      name: "tailwind css",
-    },
-    {
+      name: "Redux",
       icon: <SiRedux />,
-      name: "redux",
     },
     {
-      icon: <SiShadcnui />,
-      name: "shadcn/ui",
-    },
-    {
+      name: "Node.js",
       icon: <FaNodeJs />,
-      name: "node.js",
     },
     {
+      name: "Tailwind CSS",
+      icon: <SiTailwindcss />,
+    },
+    {
+      name: "Figma",
+      icon: <FaFigma />,
+    },
+    {
+      name: "Next.js",
+      icon: <SiNextdotjs />,
+    },
+    {
+      name: "TypeScript",
+      icon: <SiTypescript />,
+    },
+    {
+      name: "Zod",
+      icon: <SiZod />,
+    },
+    {
+      name: "Jest",
       icon: <SiJest />,
-      name: "jest",
     },
     {
+      name: "Shadcn UI",
+      icon: <SiShadcnui />,
+    },
+    {
+      name: "Git",
       icon: <SiGit />,
-      name: "git",
     },
   ],
 };
@@ -207,19 +242,21 @@ const ResumeContent = () => {
                 className="flex flex-col gap-[30px] text-center xl:text-left"
               >
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <ScrollArea className="xl:h-[500px] h-full">
+                <ScrollArea className="h-full">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => {
                       return (
                         <li
                           key={index}
                           className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                          // tabIndex={0}
                         >
                           <span className="text-accent">{item.duration}</span>
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                             {item.title}
                           </h3>
                           <div className="flex items-center gap-3">
+                            {/* dot */}
                             <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                             <p className="text-white/60">{item.company}</p>
                           </div>
@@ -231,6 +268,7 @@ const ResumeContent = () => {
               </motion.div>
             </TabsContent>
             {/* education */}
+
             <TabsContent value="education" className="w-full">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -265,7 +303,7 @@ const ResumeContent = () => {
               </motion.div>
             </TabsContent>
             {/* skills */}
-            <TabsContent value="skills" className="w-full">
+            <TabsContent value="skills" className="w-full h-full">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{
@@ -281,20 +319,21 @@ const ResumeContent = () => {
                   </p>
                 </div>
                 <ScrollArea className="xl:h-[500px] h-full">
-                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
                     {skills.skillList.map((skill, index) => {
                       return (
                         <li key={index}>
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
-                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center flex-col gap-3 group">
                                 <div className="text-6xl group-hover:text-accent transition-all duration-300">
                                   {skill.icon}
                                 </div>
+                                <span className="text-white/60 group-hover:text-accent transition-all duration-300 xl:sr-only">
+                                  {skill.name}
+                                </span>
                               </TooltipTrigger>
-                              <TooltipContent>
-                                <p className="capitalize">{skill.name}</p>
-                              </TooltipContent>
+                              <TooltipContent>{skill.name}</TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
                         </li>
@@ -302,6 +341,40 @@ const ResumeContent = () => {
                     })}
                   </ul>
                 </ScrollArea>
+              </motion.div>
+            </TabsContent>
+            {/* about */}
+            <TabsContent
+              value="about"
+              className="w-full text-center xl:text-left"
+            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: "easeIn" },
+                }}
+                className="flex flex-col gap-[30px] "
+              >
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[700px] text-white/60 mx-auto xl:mx-0">
+                  {about.description}
+                </p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className="flex items-center justify-center xl:justify-start gap-4"
+                      >
+                        <span className="text-white/60 text-xl">
+                          {item.fieldName}:
+                        </span>
+                        <span className="text-xl">{item.fieldValue}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </motion.div>
             </TabsContent>
           </div>
