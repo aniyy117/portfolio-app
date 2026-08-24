@@ -28,7 +28,13 @@ const Social = ({ containerStyle, iconStyle }) => {
   return (
     <div className={containerStyle}>
       {social.map((item) => (
-        <Link href={item.path} key={item.name} className={iconStyle}>
+        <Link
+          href={item.path}
+          key={item.name}
+          className={iconStyle}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span className="sr-only">{item.name}</span>
           {item.icon}
         </Link>

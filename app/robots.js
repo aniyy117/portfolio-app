@@ -1,3 +1,5 @@
+import { getBaseUrl } from "@/lib/utils";
+
 export default function robots() {
   return {
     rules: [
@@ -6,6 +8,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
+    sitemap: `${getBaseUrl()}/sitemap.xml`,
   };
 }

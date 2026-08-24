@@ -67,18 +67,24 @@ const Contact = () => {
 
   const onSubmit = async (values) => {
     toast.loading("Sending message...", { id: toastId });
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
 
-    const data = await res.json();
-    if (data.success) {
-      toast.success(data.message, { id: toastId });
-      reset();
-    } else {
-      toast.error(data.message, { id: toastId });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success(data.message, { id: toastId });
+        reset();
+      } else {
+        toast.error(data.message, { id: toastId });
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.", { id: toastId });
     }
   };
 
@@ -193,7 +199,7 @@ const Contact = () => {
                   </Button>
                   <Button
                     size="md"
-                    type="reset"
+                    type="button"
                     className="max-w-40 bg-primary text-white/60 hover:bg-primary hover:text-white/60"
                     onClick={() => reset()}
                   >
