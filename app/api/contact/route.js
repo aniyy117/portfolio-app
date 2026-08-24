@@ -93,11 +93,14 @@ export async function POST(request) {
       success: true,
     });
   } catch (error) {
-    return NextResponse.json({
-      message: "Email not sent",
-      error: error.message,
-      status: 500,
-      success: false,
-    });
+    return NextResponse.json(
+      {
+        message: "Email not sent",
+        error: error.message,
+        status: 500,
+        success: false,
+      },
+      { status: 500 },
+    );
   }
 }

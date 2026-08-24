@@ -19,19 +19,27 @@ export async function getArticles() {
     const articles = await response.json();
 
     // Transform Dev.to data to match our schema
-    const formattedArticles = articles.map((article) => ({
-      id: article.id,
-      title: article.title,
-      description:
-        article.description || article.body_markdown.substring(0, 200),
-      category: article.tag_list[0] || "Web Development",
-      readTime: `${Math.ceil(article.reading_time_minutes)} min read`,
-      date: new Date(article.published_at).getFullYear(),
-      tags: article.tag_list.slice(0, 5),
-      link: article.url,
-      platform: "Dev.to",
-      image: article.cover_image,
-    }));
+    const formattedArticles = articles.map((article) => {
+      const tags = article.tag_list ?? [];
+      const description =
+        article.description ||
+        (article.body_markdown
+          ? article.body_markdown.substring(0, 200)
+          : article.title);
+
+      return {
+        id: article.id,
+        title: article.title,
+        description,
+        category: tags[0] || "Web Development",
+        readTime: `${Math.ceil(article.reading_time_minutes || 1)} min read`,
+        date: new Date(article.published_at).getFullYear(),
+        tags: tags.slice(0, 5),
+        link: article.url,
+        platform: "Dev.to",
+        image: article.cover_image,
+      };
+    });
 
     return formattedArticles;
   } catch (error) {

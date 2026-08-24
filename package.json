@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "prepare": "husky",
-    "elint:fix": "npx eslint --fix .",
+    "eslint:fix": "eslint --fix .",
     "prettier": "npx prettier --write ."
   },
   "dependencies": {

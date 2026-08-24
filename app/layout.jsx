@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import PageTranstition from "@/components/PageTranstition";
 import StairTranstition from "@/components/StairTranstition";
 import { Toaster } from "@/components/ui/sonner";
+import { getBaseUrl } from "@/lib/utils";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
+  metadataBase: new URL(getBaseUrl()),
   title: { template: "%s | Aniket Jadhav", default: "Aniket Jadhav" },
   description:
     "Explore the portfolio of Aniket Jadhav, a web developer specializing in Next.js, React, and TypeScript. Discover projects, skills, and experience in modern web development.",
